@@ -3,22 +3,41 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClienteRequest;
 use App\Http\Resources\ClientesResource;
-use App\Models\Clientes;
+use App\Repositories\ClienteRepository;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
 {
     private $cliente;
 
-    public function __construct(Clientes $clientes)
+    public function __construct(ClienteRepository $model)
     {
-        $this->cliente = $clientes;
+        $this->cliente = $model;
     }
 
     public function index()
     {
-        $clientes = $this->cliente->all();
+        $clientes = $this->cliente->buscarTodosCliente();
         return ClientesResource::collection($clientes);
+    }
+
+    public function buscarClientePorId($id)
+    {
+        $cliente = $this->cliente->buscarClientePorId($id);
+        return new ClientesResource($cliente);
+    }
+
+    public function store(ClienteRequest $request)
+    {
+        $cliente = $this->cliente->criarCliente($request->validated());
+        return new ClientesResource($cliente);
+    }
+
+    public function deletarCliente($cod)
+    {
+        $cliente = $this->cliente->deletarCliente($cod);
+        return $cliente;
     }
 }

@@ -18,6 +18,7 @@ class Clientes extends Model
         'pais',
         'estado',
         'cidade',
+        'bairro',
         'logradouro',
         'endereco',
         'numero',

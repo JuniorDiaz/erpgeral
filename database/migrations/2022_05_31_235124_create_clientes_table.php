@@ -17,12 +17,13 @@ return new class extends Migration {
             $table->uuid('cod');
             $table->enum('tipopessoa', ['F', 'J']);
             $table->string('nome', 191);
-            $table->decimal('telefone', 12, 2)->nullable();
-            $table->decimal('cpfcnpj', 12, 2);
+            $table->string('telefone',20)->nullable();
+            $table->decimal('cpfcnpj', 12, 2)->nullable();
             $table->string('pais', 60)->nullable();
             $table->string('estado', 2)->nullable();
             $table->string('cidade', 100)->nullable();
             $table->string('logradouro', 50)->nullable();
+            $table->string('bairro', 50)->nullable();
             $table->string('endereco', 50)->nullable();
             $table->string('numero', 10)->nullable();
             $table->string('cep', 10)->nullable();
