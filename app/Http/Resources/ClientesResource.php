@@ -18,6 +18,15 @@ class ClientesResource extends JsonResource
             'nome' => $this->nome,
             'codigo' => $this->cod,
             'telefone' => $this->telefone,
+            'cpfcnpj' => $this->cpfcnpj,
+            'pais' => $this->pais,
+            'estado' => $this->estado,
+            'cidade' => $this->cidade,
+            'bairro' => $this->bairro,
+            'endereco' => $this->endereco,
+            'numero' => $this->numero,
+            'cep' => $this->cep,
+            'email' => $this->email,
         ];
     }
 }
