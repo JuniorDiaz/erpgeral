@@ -23,6 +23,6 @@ class Clientes extends Model
         'endereco',
         'numero',
         'cep',
-        'email',
+        'email' , 
     ];
 }
