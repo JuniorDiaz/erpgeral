@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 191);
-            $table->decimal('desconto', 12,2);
+            $table->decimal('desconto', 12,2)->nullable();
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
