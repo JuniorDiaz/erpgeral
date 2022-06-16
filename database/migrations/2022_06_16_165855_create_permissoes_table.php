@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categorias', function (Blueprint $table) {
+        Schema::create('permissoes', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 191);
-            $table->decimal('desconto', 12,2)->nullable();
-            $table->boolean('ativo')->default(true);
+            $table->string('descricao', 150);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('permissoes');
     }
 };

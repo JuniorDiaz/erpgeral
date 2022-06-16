@@ -12,20 +12,20 @@ class CategoriasController extends Controller
 {
     private $categoria;
 
-    public function __construct(CartegoriaRepository $model)
+    public function __construct(CategoriaRepository $model)
     {
         $this->categoria = $model;
     }
 
     public function index()
     {
-        $categorias = $this->perfil->buscarTodosPerfil();
+        $categorias = $this->categoria->buscarTodosCategoria();
         return CategoriasResource::collection($categorias);
     }
     public function buscarCategoriaPorId($id)
     {
         $categoria = $this->categoria->buscarCategoriaPorId($id);
-        return new CategoriasResource($perfil);
+        return new CategoriasResource($categoria);
     }
 
     public function store(CategoriaRequest $request)
