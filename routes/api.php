@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ClientesController;
 use App\Http\Controllers\Admin\CargosController;
 use App\Http\Controllers\Admin\PerfilsController;
 use App\Http\Controllers\Admin\CategoriasController;
+use App\Http\Controllers\Admin\PermissoesController;
 
 Route::controller(ClientesController::class)->group(function () {
     Route::get('/clientes','index');
@@ -30,5 +31,11 @@ Route::controller(CategoriasController::class)->group(function () {
     Route::get('/categorias/{id}','buscarCategoriaPorId');
     Route::post('/categorias','store');
     Route::delete('/categorias/{id}','deletarCategoria');
+});
+Route::controller(PermissoesController::class)->group(function () {
+    Route::get('/permissoes','index');
+    Route::get('/permissoes/{id}','buscarPermissaoPorId');
+    Route::post('/permissoes','store');
+    Route::delete('/permissoes/{id}','deletarPermissoes');
 });
 
