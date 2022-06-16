@@ -20,7 +20,7 @@ class ClienteObserver
 
     public function creating(Clientes $cliente)
     {
-        $cliente->cod = Uuid::uuid4();
+        // $cliente->cod = Uuid::uuid4();
         $cliente->user_id = 1;
     }
     /**
