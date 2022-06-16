@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\UuidTrait;
 
-class Cargos extends Model
+class Categorias extends Model
 {
     use HasFactory;
 
@@ -15,5 +15,7 @@ class Cargos extends Model
 
     protected $fillable = [
         'nome',
+        'desconto',
+        'ativo',
     ];
 }
