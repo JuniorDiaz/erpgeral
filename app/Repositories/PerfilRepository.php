@@ -2,25 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Models\Cargos;
+use App\Models\Perfils;
 
-class CargoRepository
+class PerfilRepository
 {
     protected $model;
 
-    public function __construct(Cargos $model)
+    public function __construct(Perfils $model)
     {
         $this->model = $model;
     }
 
-    public function criarCargo(array $data)
+    public function criarPerfil(array $data)
     {
         return $this
             ->model
             ->create($data);
     }
 
-    public function buscarCargoFiltro(array $filtros)
+    public function buscarPerfilFiltro(array $filtros)
     {
         return $this
             ->model
@@ -29,24 +29,24 @@ class CargoRepository
             });
     }
 
-    public function buscarCargoPorId($id)
+    public function buscarPerfilPorId($id)
     {
         return $this
             ->model
             ->where('id', $id)->first();
     }
 
-    public function buscarTodosCargo()
+    public function buscarTodosPerfil()
     {
         return $this
             ->model
             ->all();
     }
 
-    public function deletarCargo($id)
+    public function deletarPerfil($id)
     {
         $this->model->where('id', $id)->delete();
 
-        return response()->json(['mensagem' => 'Cargo deletado com sucesso!!!']);
+        return response()->json(['mensagem' => 'Perfil deletado com sucesso!!!']);
     }
 }
