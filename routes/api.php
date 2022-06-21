@@ -4,9 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ClientesController;
 use App\Http\Controllers\Admin\CargosController;
-use App\Http\Controllers\Admin\PerfilsController;
+use App\Http\Controllers\Admin\ACL\PerfilsController;
 use App\Http\Controllers\Admin\CategoriasController;
-use App\Http\Controllers\Admin\PermissoesController;
+use App\Http\Controllers\Admin\ACL\PermissoesController;
+use App\Http\Controllers\Admin\ACL\PermissaoPerfilController;
 
 Route::controller(ClientesController::class)->group(function () {
     Route::get('/clientes','index');
@@ -37,5 +38,11 @@ Route::controller(PermissoesController::class)->group(function () {
     Route::get('/permissoes/{id}','buscarPermissaoPorId');
     Route::post('/permissoes','store');
     Route::delete('/permissoes/{id}','deletarPermissoes');
+});
+
+Route::controller(PermissaoPerfilController::class)->group(function () {
+    Route::get('perfil/{id}/permissao','permissao');
+    Route::post('perfil/{id}/permissao/store', 'attachPermissionProfile');
+    Route::get('perfil/{id}/permissao/{idPermission}/detach', 'detachPermissionProfile');
 });
 

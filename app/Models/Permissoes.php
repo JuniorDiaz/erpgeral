@@ -12,4 +12,9 @@ class Permissoes extends Model
         'nome',
         'descricao',
     ];
+
+    public function perfils()
+    {
+        return $this->belongsToMany(Perfils::class,'permissao_perfil','permissao_id','perfil_id');
+    }
 }
