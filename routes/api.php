@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ACL\PerfilsController;
 use App\Http\Controllers\Admin\CategoriasController;
 use App\Http\Controllers\Admin\ACL\PermissoesController;
 use App\Http\Controllers\Admin\ACL\PermissaoPerfilController;
+use App\Http\Controllers\Admin\ACL\PlanosPerfilController;
+use App\Http\Controllers\Admin\PlanosController;
 
 Route::controller(ClientesController::class)->group(function () {
     Route::get('/clientes','index');
@@ -46,3 +48,14 @@ Route::controller(PermissaoPerfilController::class)->group(function () {
     Route::get('perfil/{id}/permissao/{idPermission}/detach', 'detachPermissionProfile');
 });
 
+Route::controller(PlanosController::class)->group(function () {
+    Route::get('/planos','index');
+    Route::get('/planos/{id}','buscarPlanoPorId');
+    Route::post('/planos','store');
+    Route::delete('/planos/{id}','deletarPlanos');
+});
+Route::controller(PlanoPerfilController::class)->group(function () {
+    Route::get('perfil/{id}/plano','plano');
+    Route::post('perfil/{id}/plano/store', 'attachPlanoProfile');
+    Route::get('perfil/{id}/plano/{idPlano}/detach', 'detachPlanoProfile');
+});
