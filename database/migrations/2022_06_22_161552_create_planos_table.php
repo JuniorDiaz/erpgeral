@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('planos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 191);
-            $table->string('valor', 191);
-            $table->string('descricao', 150);
+            $table->string('nome', 50);
+            $table->decimal('valor', 12,2);
+            $table->string('descricao', 150)->nullable();
             $table->timestamps();
         });
     }
