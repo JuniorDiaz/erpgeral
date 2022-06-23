@@ -10,8 +10,16 @@ use App\Http\Controllers\Admin\ACL\PermissoesController;
 use App\Http\Controllers\Admin\ACL\PermissaoPerfilController;
 use App\Http\Controllers\Admin\ACL\PlanoPerfilController;
 use App\Http\Controllers\Admin\PlanosController;
+use App\Http\Controllers\Auth\AuthController;
 
-Route::group(['prefix' => 'v1','middleware' => ['auth:sanctum']], function () {
+
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/auth/register', 'store');
+    Route::post('/auth/token', 'auth');
+});
+
+Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], function () {
 
     Route::controller(ClientesController::class)->group(function () {
         Route::get('/clientes', 'index');
@@ -61,5 +69,4 @@ Route::group(['prefix' => 'v1','middleware' => ['auth:sanctum']], function () {
         Route::post('perfil/{id}/plano/store', 'attachPlanoProfile');
         Route::get('perfil/{id}/plano/{idPlano}/detach', 'detachPlanoProfile');
     });
-
 });
